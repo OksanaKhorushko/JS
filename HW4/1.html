@@ -24,11 +24,11 @@
   function ProductES5(name, price) {
     this.name = name;
     this.price = price;
-
-    this.make25Discount = function () {
-      price *= .75;
-    }
   }
+
+  ProductES5.prototype.make25Discount = function () {
+    this.price *= .75;
+  };
 
   const productES5 = new ProductES5("apple", 100);
 

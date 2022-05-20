@@ -38,9 +38,8 @@
    * @param {number} num принимаемое число
    * @returns {{}|{units: number, dozens: number, hundreds: number}}
   */
-
   function getDigitsOfNumber(num) {
-    if (num < 0 || num > 999 || num % 1) {
+    if (num < 0 || num > 999 || !Number.isInteger(num)) {
       console.error(
         'Необходимо ввести целое положительное число от 0 до 999 включительно!'
       );
