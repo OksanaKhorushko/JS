@@ -59,7 +59,7 @@
     <a href="#">link</a>
    */
   document.querySelector("div.dropdown")
-    .insertAdjacentHTML('afterbegin', '<a href="#">link</a>');
+    .insertAdjacentHTML('afterend', '<a href="#">link</a>');
 
   /*
   5. У элемента с id "dropdownMenuButton" замените id на "superDropdown".
@@ -86,7 +86,7 @@
    */
   const attributes = document.querySelector(".btn.dropdown-toggle").attributes;
 
-  for (let attr of attributes) {
+  for (const attr of attributes) {
     console.log(`Атрибут "${attr.name}" содержит значение "${attr.value}"`);
   }
 </script>
