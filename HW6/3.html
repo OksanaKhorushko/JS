@@ -40,8 +40,7 @@
   document.querySelector('.stars_container')
     .addEventListener('mouseover', (event) => {
       if (event.target.classList.contains('fa-star')) {
-        event.target.classList.add('golden');
-        let prevSibling = event.target.previousElementSibling;
+        let prevSibling = event.target;
 
         while (prevSibling) {
           prevSibling.classList.add('golden');

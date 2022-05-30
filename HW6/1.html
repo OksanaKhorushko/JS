@@ -50,7 +50,7 @@
   2. Установите всем элементам с классом "product" внешний отступ справа 50px.
    */
   document.querySelectorAll('.product').forEach((el) => {
-    el.style.marginRight = '50px'
+    el.style.marginRight = '50px';
   });
 
   /*
@@ -60,7 +60,7 @@
   document.addEventListener('click', (event) => {
     if (event.target.tagName === 'BUTTON') {
       event.target.innerText = 'Добавлено';
-      event.target.setAttribute('disabled', 'disabled');
+      event.target.disabled = true;
     }
   });
 

@@ -65,8 +65,9 @@
   должно моментально отображаться в span. То есть при печати в input'е тег span
   также должен меняться.
   */
+  const spanEl = document.querySelector('span');
   document.getElementById('from').addEventListener('input', (event) => {
-    document.querySelector('span').innerText = event.target.value;
+    spanEl.innerText = event.target.value;
   });
 
   /*
@@ -75,8 +76,8 @@
   1) добавить два класса: animate__animated и animate__fadeInLeftBig
   2) поставить данному элементу стиль visibility в значение 'visible'.
    */
+  const message = document.querySelector('.message');
   document.querySelector('.messageBtn').addEventListener('click', () => {
-    const message = document.querySelector('.message');
     message.classList.add('animate__animated', 'animate__fadeInLeftBig');
     message.style.visibility = 'visible';
   });
@@ -92,22 +93,21 @@
   данному полю).
   Если поле было чем-либо заполнено, подсветку (класс error) необходимо убрать.
    */
-  document.querySelector('form').addEventListener('submit', (event) => {
-    let isFormInvalid = false;
-    const inputs = document.querySelectorAll('.form-control');
-
+  const inputs = document.querySelectorAll('.form-control');
+  const form = document.querySelector('form')
+  form.addEventListener('submit', (event) => {
     inputs.forEach((input) => {
       if (!input.value) {
         input.classList.add('error');
-        isFormInvalid = true;
+        event.preventDefault();
       }
     });
+  })
 
-    if (isFormInvalid) {
-      event.preventDefault();
-    }
-  });
-
+  form.addEventListener('input', (event) => {
+    !event.target.value ? event.target.classList.add('error')
+      : event.target.classList.remove('error');
+});
 </script>
 </body>
 </html>
