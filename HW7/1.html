@@ -36,7 +36,7 @@
 
   <div class="text">Уверен, ты справишься с этим заданием!</div>
 
-  <input type="range" value="30" min="20" max="100">
+  <input type="range" min="20" max="100">
   <div id="inputDiv">
     Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quaerat, expedita.
   </div>
@@ -60,14 +60,12 @@
     H99: "Однако, программирование, в итоге, принесет свои плоды.",
   };
 
+  const textEl = document.querySelector('.text');
   document.querySelector('.nav').addEventListener('click', () => {
     if (event.target.classList.contains('nav-link')) {
       document.querySelector('.nav-link.active').classList.remove('active');
       event.target.classList.add('active');
-
-      const key = event.target.parentNode.dataset.text;
-
-      document.querySelector('.text').innerText = panelText[key];
+      textEl.innerText = panelText[event.target.parentNode.dataset.text];
     }
   });
 
@@ -77,12 +75,11 @@
   шрифт у текста, никакого резкого увеличения шрифта не должно быть при
   перетаскивании ползунка.
    */
-
-  //  Чтобы избежать первого рывка, установила на инпут аттрибут value=30px
-  //  (изначальному размеру шрифта)
-  document.querySelector('input').addEventListener('input', (event) => {
-    document.getElementById('inputDiv').style
-      .fontSize = `${event.target.value}px`;
+  const inputDiv = document.getElementById('inputDiv');
+  const input = document.querySelector('input');
+  input.value = parseInt(getComputedStyle(inputDiv).fontSize);
+  input.addEventListener('input', (event) => {
+    inputDiv.style.fontSize = `${event.target.value}px`;
   });
 
 </script>
